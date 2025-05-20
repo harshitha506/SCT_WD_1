@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MySite Navigation</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 2000px; /* enable scrolling */
+      background: #e0f7fa; /* light cyan background */
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #add8e6; /* light blue */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 30px;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1000;
+      box-shadow: none;
+    }
+
+    nav.scrolled {
+      background-color: #1e3a8a; /* blue */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      padding: 10px 30px;
+    }
+
+    .brand {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0b3d91; /* darker blue for contrast on light blue bg */
+      cursor: default;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    nav.scrolled .brand {
+      color: #add8e6; /* light blue for contrast on dark blue bg */
+    }
+
+    ul.menu {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.menu li {
+      margin-left: 30px;
+    }
+
+    ul.menu li a {
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      color: #0b3d91; /* darker blue */
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+    }
+
+    nav.scrolled ul.menu li a {
+      color: #add8e6; /* light blue */
+    }
+
+    ul.menu li a:hover {
+      background-color: #ffa500; /* orange on hover */
+      color: #fff;
+    }
+
+    #message {
+      position: fixed;
+      top: 65px;
+      width: 100%;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: #1e3a8a; /* blue */
+      transition: color 0.3s ease;
+      z-index: 999;
+      user-select: none;
+    }
+
+   #message.scrolled {
+  color: #87ceeb; /* darker sky blue */
+}
+
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="brand">MySite</div>
+    <ul class="menu">
+      <li><a href="#home" tabindex="1">Home</a></li>
+      <li><a href="#about" tabindex="2">About</a></li>
+      <li><a href="#services" tabindex="3">Services</a></li>
+      <li><a href="#contact" tabindex="4">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="message">Welcome to MySite</div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const message = document.getElementById('message');
+
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+        message.textContent = "Keep exploring, you're doing great!";
+        message.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+        message.textContent = "Welcome to MySite";
+        message.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
